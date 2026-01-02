@@ -1,3 +1,15 @@
+local library, notifications = loadstring(game:HttpGet("https://raw.githubusercontent.com/i77lhm/Libraries/refs/heads/main/Priv9/Library.lua"))()
+local window = library:window({
+	name = "priv9"
+})
+
+
+
+notifications:create_notification({name = "loading menu..."})
+notifications:create_notification({name = "loading modules..."})
+
+
+
 local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"))
 local rs = cloneref(game:GetService("RunService"))
 local plrs = cloneref(game:GetService("Players"))
@@ -52,6 +64,129 @@ local InvalidateCache = cache.invalidate
 local CompareInstance = compareinstances
 
 
+
+
+
+
+local VisualCache = {
+    name = {},
+    box = {},
+    skeleton = {},
+
+}
+
+
+
+
+local Entities = {
+ 
+
+}
+
+
+
+local BulletTracerTextures = {
+    ["Default"] = "rbxassetid://446111271",
+    ["Beam"] = "rbxassetid://7151777149",
+    ["Ion Beam"] = "rbxassetid://2950987173",
+    ["Lightning"] = "rbxassetid://7151778302",
+    ["Pulsing"] = "rbxassetid://11226108137",
+    ["DNA"] = "rbxassetid://6511613786",
+}
+
+
+
+local Modules = {
+    
+
+}
+
+
+
+
+
+local CheatHolder = {
+    Tabs = {
+      legit = window:tab({name = "visuals"}),
+      rage = window:tab({name = "rage"}),
+
+
+
+    };
+
+
+
+   VisualSettings = {
+    Name = {
+        Enabled = false,
+        textSize = 13,
+        textColor = Color3(255, 255, 255),
+        textFont = Drawing.Fonts.Plex,
+        textCenter = true,
+
+    };
+
+
+
+    WeaponChams = {
+        Enabled = false,
+        gunColor = Color3(255, 255, 255),
+        gunMaterial = Enum.Material.ForceField,
+
+
+    };
+
+
+    };
+    
+
+
+
+    VisualConnections = {
+       name,
+       skeleton,
+
+       plrAdded,
+
+    };
+
+
+
+    Connections = {
+
+    };
+
+
+
+    WeaponSettings = {
+    
+
+    };
+
+
+
+    MovementSettings = {
+    
+
+   };
+
+
+
+   Flags = {
+    Name_ESP,
+
+
+
+   };
+
+
+
+
+
+}
+
+
+function CreateESPHolder()
 for _, nigger in pairs(plrs:GetChildren()) do
 
 local BillboardGui = Instance.new("BillboardGui")
@@ -234,4 +369,78 @@ end
 
 
 CreateESPHolder()
-warn("Niggers!!!")
+
+
+local VisualsColumn1 = CheatHolder.Tabs.legit:column({})
+local AimbotColumn1 = CheatHolder.Tabs.legit:column({})
+
+
+local Sections = {
+     Visuals = VisualsColumn1:section({name = "Visuals", auto_fill = false, size = 0.3}),
+     Aimbot = AimbotColumn1:section({name = "target selection", auto_fill = false, size = 0.7})
+
+
+}
+
+
+local NameToggle = Sections.Visuals:toggle(
+    {name = "name", 
+    flag = CheatHolder.Flags.Name_ESP,
+    callback = function(v)
+        print(v)
+
+    end
+
+})
+
+
+
+local BoxToggle = Sections.Visuals:toggle(
+    {name = "box", 
+    flag = CheatHolder.Flags.Name_ESP,
+    callback = function(v)
+        print(v)
+
+    end
+
+})
+
+
+
+local NameColor = Sections.Visuals:colorpicker({
+  name = "text color",
+  color = Color3(255, 255, 255),
+  alpha = 0,
+  flag = "color_picker",
+
+  callback = function(color, alpha)
+     print(color, alpha)
+
+  end
+})
+
+
+
+local BoxColor = Sections.Visuals:colorpicker({
+  name = "Box Color",
+  color = Color3(255, 255, 255),
+  alpha = 0,
+  flag = "color_picker",
+
+  callback = function(color, alpha)
+     print(color, alpha)
+
+  end
+})
+
+
+
+
+notifications:create_notification({
+  name = "loaded cheat"
+})
+
+
+
+
+library:init_config(window) 
